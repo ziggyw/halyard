@@ -363,6 +363,23 @@
  * [**hal config notification twilio edit**](#hal-config-notification-twilio-edit)
  * [**hal config notification twilio enable**](#hal-config-notification-twilio-enable)
  * [**hal config provider**](#hal-config-provider)
+ * [**hal config provider alicloud**](#hal-config-provider-alicloud)
+ * [**hal config provider alicloud account**](#hal-config-provider-alicloud-account)
+ * [**hal config provider alicloud account add**](#hal-config-provider-alicloud-account-add)
+ * [**hal config provider alicloud account delete**](#hal-config-provider-alicloud-account-delete)
+ * [**hal config provider alicloud account edit**](#hal-config-provider-alicloud-account-edit)
+ * [**hal config provider alicloud account get**](#hal-config-provider-alicloud-account-get)
+ * [**hal config provider alicloud account list**](#hal-config-provider-alicloud-account-list)
+ * [**hal config provider alicloud bakery**](#hal-config-provider-alicloud-bakery)
+ * [**hal config provider alicloud base-image**](#hal-config-provider-alicloud-base-image)
+ * [**hal config provider alicloud base-image add**](#hal-config-provider-alicloud-base-image-add)
+ * [**hal config provider alicloud base-image delete**](#hal-config-provider-alicloud-base-image-delete)
+ * [**hal config provider alicloud base-image edit**](#hal-config-provider-alicloud-base-image-edit)
+ * [**hal config provider alicloud base-image get**](#hal-config-provider-alicloud-base-image-get)
+ * [**hal config provider alicloud base-image list**](#hal-config-provider-alicloud-base-image-list)
+ * [**hal config provider alicloud disable**](#hal-config-provider-alicloud-disable)
+ * [**hal config provider alicloud edit**](#hal-config-provider-alicloud-edit)
+ * [**hal config provider alicloud enable**](#hal-config-provider-alicloud-enable)
  * [**hal config provider appengine**](#hal-config-provider-appengine)
  * [**hal config provider appengine account**](#hal-config-provider-appengine-account)
  * [**hal config provider appengine account add**](#hal-config-provider-appengine-account-add)
@@ -7120,6 +7137,7 @@ hal config provider [subcommands]
 ```
 
 #### Subcommands
+ * `alicloud`: Manage and view Spinnaker configuration for the alicloud provider
  * `appengine`: Manage and view Spinnaker configuration for the appengine provider
  * `aws`: Manage and view Spinnaker configuration for the aws provider
  * `azure`: Manage and view Spinnaker configuration for the azure provider
@@ -7132,6 +7150,339 @@ hal config provider [subcommands]
  * `kubernetes`: Manage and view Spinnaker configuration for the kubernetes provider
  * `oracle`: Manage and view Spinnaker configuration for the oracle provider
  * `tencentcloud`: Manage and view Spinnaker configuration for the tencentcloud provider
+
+---
+## hal config provider alicloud
+
+Manage and view Spinnaker configuration for the alicloud provider
+
+#### Usage
+```
+hal config provider alicloud [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the alicloud provider's account
+ * `bakery`: Manage and view Spinnaker configuration for the alicloud provider's image bakery configuration.
+ * `base-image`: Manage and view Spinnaker configuration for the alicloud provider's base image.
+ * `disable`: Set the alicloud provider as disabled
+ * `edit`: Set provider-wide properties for the Alibaba Cloud provider
+ * `enable`: Set the alicloud provider as enabled
+
+---
+## hal config provider alicloud account
+
+Manage and view Spinnaker configuration for the alicloud provider's account
+
+#### Usage
+```
+hal config provider alicloud account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add an account to the alicloud provider.
+ * `delete`: Delete a specific alicloud account by name.
+ * `edit`: Edit an account in the alicloud provider.
+ * `get`: Get the specified account details for the alicloud provider.
+ * `list`: List the account names for the alicloud provider.
+
+---
+## hal config provider alicloud account add
+
+Add an account to the alicloud provider.
+
+#### Usage
+```
+hal config provider alicloud account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--access-key-id`: The secret id used to access Alibaba Cloud.
+ * `--access-key-secret`: (*Sensitive data* - user will be prompted on standard input) The secret key used to access  Alibaba Cloud.
+ * `--account-id`: Your Alibaba Cloud account ID to manage. 
+ * `--assume-role`: If set, Halyard will configure a credentials provider that uses Alibaba Cloud Security Token Service to assume the specified role.
+
+Example: "user/spinnaker" or "role/spinnakerManaged"
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
+ * `--regions`: (*Default*: `[]`) The Alibaba Cloud regions this Spinnaker account will manage.
+ * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--write-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to make changes to this account's cloud resources.
+
+
+---
+## hal config provider alicloud account delete
+
+Delete a specific alicloud account by name.
+
+#### Usage
+```
+hal config provider alicloud account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider alicloud account edit
+
+Edit an account in the alicloud provider.
+
+#### Usage
+```
+hal config provider alicloud account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--access-key-id`: The secret id used to access Alibaba Cloud.
+ * `--access-key-secret`: (*Sensitive data* - user will be prompted on standard input) The secret key used to access  Alibaba Cloud.
+ * `--account-id`: Your Alibaba Cloud account ID to manage. 
+ * `--add-read-permission`: Add this permission to the list of read permissions.
+ * `--add-region`: Add this region to the list of managed regions.
+ * `--add-required-group-membership`: Add this group to the list of required group memberships.
+ * `--add-write-permission`: Add this permission to the list of write permissions.
+ * `--assume-role`: If set, Halyard will configure a credentials provider that uses Alibaba Cloud Security Token Service to assume the specified role.
+
+Example: "user/spinnaker" or "role/spinnakerManaged"
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
+ * `--regions`: (*Default*: `[]`) The Alibaba Cloud regions this Spinnaker account will manage.
+ * `--remove-read-permission`: Remove this permission from the list of read permissions.
+ * `--remove-region`: Remove this region from the list of managed regions.
+ * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
+ * `--remove-write-permission`: Remove this permission to from list of write permissions.
+ * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--write-permissions`: A user must have at least one of these roles in order to make changes to this account's cloud resources.
+
+
+---
+## hal config provider alicloud account get
+
+Get the specified account details for the alicloud provider.
+
+#### Usage
+```
+hal config provider alicloud account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider alicloud account list
+
+List the account names for the alicloud provider.
+
+#### Usage
+```
+hal config provider alicloud account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider alicloud bakery
+
+Manage and view Spinnaker configuration for the alicloud provider's image bakery configuration.
+
+#### Usage
+```
+hal config provider alicloud bakery [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider alicloud base-image
+
+Manage and view Spinnaker configuration for the alicloud provider's base image.
+
+#### Usage
+```
+hal config provider alicloud base-image [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add a base image for the alicloud provider's bakery.
+ * `delete`: Delete a specific alicloud base image by name.
+ * `edit`: Edit a base image for the alicloud provider's bakery.
+ * `get`: Get the specified base image details for the alicloud provider.
+ * `list`: List the base image names for the alicloud provider.
+
+---
+## hal config provider alicloud base-image add
+
+Add a base image for the alicloud provider's bakery.
+
+#### Usage
+```
+hal config provider alicloud base-image add BASE-IMAGE [parameters]
+```
+
+#### Parameters
+`BASE-IMAGE`: The name of the base image to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--detailed-description`: A long description to help human operators identify the image.
+ * `--instance-type`: (*Required*) The instance type for the baking configuration.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--package-type`: This is used to help Spinnaker's bakery download the build artifacts you supply it with. For example, specifying 'deb' indicates that your artifacts will need to be fetched from a debian repository.
+ * `--region`: (*Required*) The region for the baking configuration.
+ * `--short-description`: A short description to help human operators identify the image.
+ * `--source-image-id`: (*Required*) The source image ID for the baking configuration.
+ * `--ssh-user-name`: (*Required*) The ssh username for the baking configuration.
+ * `--template-file`: This is the name of the packer template that will be used to bake images from this base image. The template file must be found in this list [https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer](https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer), or supplied as described here: [https://spinnaker.io/setup/bakery/](https://spinnaker.io/setup/bakery/)
+
+
+---
+## hal config provider alicloud base-image delete
+
+Delete a specific alicloud base image by name.
+
+#### Usage
+```
+hal config provider alicloud base-image delete BASE-IMAGE [parameters]
+```
+
+#### Parameters
+`BASE-IMAGE`: The name of the base image to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider alicloud base-image edit
+
+Edit a base image for the alicloud provider's bakery.
+
+#### Usage
+```
+hal config provider alicloud base-image edit BASE-IMAGE [parameters]
+```
+
+#### Parameters
+`BASE-IMAGE`: The name of the base image to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--detailed-description`: A long description to help human operators identify the image.
+ * `--id`: This is the identifier used by your cloud to find this base image.
+ * `--instance-type`: (*Required*) The instance type for the baking configuration.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--package-type`: This is used to help Spinnaker's bakery download the build artifacts you supply it with. For example, specifying 'deb' indicates that your artifacts will need to be fetched from a debian repository.
+ * `--region`: (*Required*) The region for the baking configuration.
+ * `--short-description`: A short description to help human operators identify the image.
+ * `--source-image-id`: (*Required*) The source image ID for the baking configuration.
+ * `--ssh-user-name`: (*Required*) The ssh username for the baking configuration.
+ * `--template-file`: This is the name of the packer template that will be used to bake images from this base image. The template file must be found in this list [https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer](https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer), or supplied as described here: [https://spinnaker.io/setup/bakery/](https://spinnaker.io/setup/bakery/)
+
+
+---
+## hal config provider alicloud base-image get
+
+Get the specified base image details for the alicloud provider.
+
+#### Usage
+```
+hal config provider alicloud base-image get BASE-IMAGE [parameters]
+```
+
+#### Parameters
+`BASE-IMAGE`: The name of the base image to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider alicloud base-image list
+
+List the base image names for the alicloud provider.
+
+#### Usage
+```
+hal config provider alicloud base-image list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider alicloud disable
+
+Set the alicloud provider as disabled
+
+#### Usage
+```
+hal config provider alicloud disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider alicloud edit
+
+Set provider-wide properties for the Alibaba Cloud provider
+
+#### Usage
+```
+hal config provider alicloud edit [parameters]
+```
+
+#### Parameters
+ * `--access-key-id`: The secret id used to access Alibaba Cloud.
+ * `--access-key-secret`: (*Sensitive data* - user will be prompted on standard input) The secret key used to access  Alibaba Cloud.
+ * `--default-region`: The region for the sts configuration.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider alicloud enable
+
+Set the alicloud provider as enabled
+
+#### Usage
+```
+hal config provider alicloud enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
 
 ---
 ## hal config provider appengine

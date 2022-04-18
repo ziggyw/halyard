@@ -18,6 +18,7 @@ package com.netflix.spinnaker.halyard.cli.command.v1.config.providers;
 
 import com.beust.jcommander.Parameters;
 import com.netflix.spinnaker.halyard.cli.command.v1.NestableCommand;
+import com.netflix.spinnaker.halyard.cli.command.v1.config.providers.alicloud.AliCloudCommand;
 import com.netflix.spinnaker.halyard.cli.command.v1.config.providers.appengine.AppengineCommand;
 import com.netflix.spinnaker.halyard.cli.command.v1.config.providers.aws.AwsCommand;
 import com.netflix.spinnaker.halyard.cli.command.v1.config.providers.azure.AzureCommand;
@@ -59,6 +60,7 @@ public class ProviderCommand extends NestableCommand {
     registerSubcommand(
         new com.netflix.spinnaker.halyard.cli.command.v1.config.providers.oracle.OracleCommand());
     registerSubcommand(new TencentCloudCommand());
+    registerSubcommand(new AliCloudCommand());
   }
 
   @Override
